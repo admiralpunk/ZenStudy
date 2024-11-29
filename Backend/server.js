@@ -26,7 +26,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
 
 //test
-app.get("/test", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     res.json({ message: "yes, it works" });
   } catch (error) {
