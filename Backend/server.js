@@ -11,6 +11,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors({ origin: true }));
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -23,6 +24,15 @@ mongoose
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
+
+//test
+app.get("/test", async (req, res) => {
+  try {
+    res.json({ message: "yes, it works" });
+  } catch (error) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
 // Start the server
 const PORT = process.env.PORT || 5000;
