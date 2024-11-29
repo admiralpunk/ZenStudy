@@ -33,13 +33,56 @@ function Dashboard() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
       <h2>Dashboard</h2>
-      <button onClick={handleLogout} style={{ marginBottom: "20px" }}>
+
+      <div style={{ margin: "20px 0" }}>
+        <ContactForm refreshContacts={fetchContacts} />
+      </div>
+
+      <div>
+        <h3>Contacts</h3>
+        <table
+          style={{
+            margin: "0 auto",
+            borderCollapse: "collapse",
+            width: "80%",
+          }}
+        >
+          <thead>
+            <tr>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>Name</th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
+                Email
+              </th>
+              <th style={{ border: "1px solid #ddd", padding: "8px" }}>
+                Phone
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map((contact, index) => (
+              <tr key={index}>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                  {contact.name}
+                </td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                  {contact.email}
+                </td>
+                <td style={{ border: "1px solid #ddd", padding: "8px" }}>
+                  {contact.mobile}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <button
+        onClick={handleLogout}
+        style={{ marginBottom: "20px", marginTop: "10px" }}
+      >
         Logout
       </button>
-      <ContactForm refreshContacts={fetchContacts} />
-      <Contacts contacts={contacts} refreshContacts={fetchContacts} />
     </div>
   );
 }
